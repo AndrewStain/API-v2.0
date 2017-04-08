@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Pool" Class="API_DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-BVBL88S\API_DB;Initial Catalog=Pool;Integrated Security=True;Pooling=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PoolConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.answers_to_questions" Member="answers_to_questions">
+    <Type Name="answers_to_questions">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="question_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="answer_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="answers_to_questions_user_submission" Member="user_submission" ThisKey="Id" OtherKey="answer_id" Type="user_submission" Cardinality="One" />
+      <Association Name="pool_answer_answers_to_questions" Member="pool_answer" ThisKey="answer_id" OtherKey="answer_id" Type="pool_answer" IsForeignKey="true" />
+      <Association Name="pool_question_answers_to_questions" Member="pool_question" ThisKey="question_id" OtherKey="question_id" Type="pool_question" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pool_answer" Member="pool_answer">
+    <Type Name="pool_answer">
+      <Column Name="answer_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="text" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="pool_answer_answers_to_questions" Member="answers_to_questions" ThisKey="answer_id" OtherKey="answer_id" Type="answers_to_questions" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pool_question" Member="pool_question">
+    <Type Name="pool_question">
+      <Column Name="question_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="text" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="pool_question_answers_to_questions" Member="answers_to_questions" ThisKey="question_id" OtherKey="question_id" Type="answers_to_questions" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="User">
+    <Type Name="User">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="password_hash" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="User_user_submission" Member="user_submission" ThisKey="Id" OtherKey="user_id" Type="user_submission" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_submission" Member="user_submission">
+    <Type Name="user_submission">
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="answer_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="answers_to_questions_user_submission" Member="answers_to_questions" ThisKey="answer_id" OtherKey="Id" Type="answers_to_questions" IsForeignKey="true" />
+      <Association Name="User_user_submission" Member="User" ThisKey="user_id" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.answer_total" Method="answer_total" IsComposable="true">
+    <Parameter Name="param1" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.votes_total" Method="votes_total" IsComposable="true">
+    <Parameter Name="param1" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

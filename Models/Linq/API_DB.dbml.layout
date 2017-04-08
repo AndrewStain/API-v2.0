@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="API_DB">
+  <DataContextMoniker Name="/API_DBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="543f401c-ad1c-48f1-b652-4b70f8cf9b8c" absoluteBounds="3.5, 1.875, 2, 1.3862939453124998">
+      <DataClassMoniker Name="/API_DBDataContext/answers_to_questions" />
+      <nestedChildShapes>
+        <elementListCompartment Id="86ccadb8-ac7e-46a1-8cbb-2fedac9d5304" absoluteBounds="3.515, 2.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="04c353ef-9d7c-4cb7-9dba-dfc60db3714e" absoluteBounds="0.75, 1, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/API_DBDataContext/pool_answer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="50a64b13-c9c6-44e7-820b-cc51a9449904" absoluteBounds="0.765, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4da608d3-9f75-4853-95c2-41c5b70dd235" absoluteBounds="0.75, 2.75, 2, 1.193992513020834">
+      <DataClassMoniker Name="/API_DBDataContext/pool_question" />
+      <nestedChildShapes>
+        <elementListCompartment Id="91a5d61d-98d7-486a-9045-52a20007533b" absoluteBounds="0.765, 3.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="72669619-43c4-4c94-89f5-0d7cfc761014" absoluteBounds="6.125, 3.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/API_DBDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3c51e926-a45b-4bf1-b6a3-73afbf34ceb2" absoluteBounds="6.1400000000000006, 4.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9e65bc25-e056-47a8-88d3-7b2b2c45efaf" absoluteBounds="6.125, 2, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/API_DBDataContext/user_submission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="29822d34-4394-4129-b18c-ab94f6e0733b" absoluteBounds="6.14, 2.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.03449625651042); (3.5 : 2.03449625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/API_DBDataContext/pool_answer/pool_answer_answers_to_questions" />
+      <nodes>
+        <classShapeMoniker Id="04c353ef-9d7c-4cb7-9dba-dfc60db3714e" />
+        <classShapeMoniker Id="543f401c-ad1c-48f1-b652-4b70f8cf9b8c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 3.00564697265625); (3.5 : 3.00564697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/API_DBDataContext/pool_question/pool_question_answers_to_questions" />
+      <nodes>
+        <classShapeMoniker Id="4da608d3-9f75-4853-95c2-41c5b70dd235" />
+        <classShapeMoniker Id="543f401c-ad1c-48f1-b652-4b70f8cf9b8c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.59699625651042); (6.125 : 2.59699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/API_DBDataContext/answers_to_questions/answers_to_questions_user_submission" />
+      <nodes>
+        <classShapeMoniker Id="543f401c-ad1c-48f1-b652-4b70f8cf9b8c" />
+        <classShapeMoniker Id="9e65bc25-e056-47a8-88d3-7b2b2c45efaf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.125 : 3.875); (7.125 : 3.19399251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/API_DBDataContext/User/User_user_submission" />
+      <nodes>
+        <classShapeMoniker Id="72669619-43c4-4c94-89f5-0d7cfc761014" />
+        <classShapeMoniker Id="9e65bc25-e056-47a8-88d3-7b2b2c45efaf" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
